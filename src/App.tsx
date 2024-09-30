@@ -1,6 +1,6 @@
 // Importing React from the React package
 // Importing colors from the our file path ./colors.json
-import React from 'react';
+import React, { useState } from 'react';
 import colors from './colors.json';
 
 //Interface Color and what you expect, hex, name, and comp
