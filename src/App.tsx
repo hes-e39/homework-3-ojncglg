@@ -10,12 +10,14 @@ interface Color {
   comp: { hex: string; name: string }[];
 }
 
-//Expects props matching our Color interface. 
-//It immediately destructures these props so we can use hex, name and comp
-
+//Create a state variable that will give us our main color first
+//State variable gets upadted and rerendered 
 const ColorCard: React.FC<Color> = ({ hex, name, comp }) => {
     const [displayHex, setDisplayHex] = useState(hex);
-  
+
+
+//Define Onmouse what happens when a user hovers over the element
+//When the mouse enters the div, it calls displayHex and rerenders the component
     return (
       <div className="m-4 p-4 border rounded-lg shadow-md">
         <div className="flex items-center mb-2">
@@ -29,6 +31,10 @@ const ColorCard: React.FC<Color> = ({ hex, name, comp }) => {
         <p className="text-gray-600 mb-2">Hex: #{displayHex}</p>
         <div className="flex flex-wrap">
           {comp.map((c, index) => (
+    // When you move your mouse over a complementary color swatch,
+    //it changes the displayed hex code to that color's hex code.
+    //When you move your mouse away from a complementary color swatch, 
+    //it changes the displayed hex code back to the main color's hex code.
             <div 
               key={index} 
               className="w-8 h-8 rounded-full mr-2 mb-2" 
@@ -42,7 +48,6 @@ const ColorCard: React.FC<Color> = ({ hex, name, comp }) => {
       </div>
     );
   };
-  
   function App() {
     return (
       <div className="container mx-auto p-4">
